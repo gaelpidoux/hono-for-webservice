@@ -1,0 +1,19 @@
+meta {
+  name: GET /v1/api/vinyls?fields=title,price
+  type: http
+  seq: 13
+}
+
+get {
+  url: /v1/api/vinyls?fields=title,price
+  body: none
+  auth: inherit
+}
+
+params:query {
+  fields: title,price
+}
+
+settings {
+  encodeUrl: true
+}

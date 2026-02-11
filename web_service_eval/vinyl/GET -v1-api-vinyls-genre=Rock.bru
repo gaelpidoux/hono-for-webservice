@@ -1,0 +1,24 @@
+meta {
+  name: GET /v1/api/vinyls?genre=Rock
+  type: http
+  seq: 10
+}
+
+get {
+  url: http://localhost:3000/v1/api/vinyls?genre=truc
+  body: none
+  auth: bearer
+}
+
+params:query {
+  genre: truc
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OThjOTFiYjU0Y2U3YTdjNzA0ZjY5YTEiLCJlbWFpbCI6Im1hbmFnZXIyQHRlc3QuY29tIiwiZXhwIjoxNzcwODIyOTU3fQ.VwX3w1zx_3iY9OPXtFum1eSTsJiGm-xIKl5GLfY9hSk
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

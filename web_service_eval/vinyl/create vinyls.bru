@@ -1,0 +1,34 @@
+meta {
+  name: create vinyls
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/v1/api/vinyls
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OThjOTFiYjU0Y2U3YTdjNzA0ZjY5YTEiLCJlbWFpbCI6Im1hbmFnZXIyQHRlc3QuY29tIiwiZXhwIjoxNzcwODIxODE3fQ.SP9ab_tC2a4sEwPvvk_tOeKtjJkyBbr3vpGHMGMpHeo
+}
+
+body:json {
+  {
+    "title": "tructruc",
+    "releaseDate": "2026-01-04",
+    "state": "new",
+    "price": 25,
+    "stock": 100,
+    "genre": "truc",
+    "group": "698c92779608339974c8e069",
+    "createdAt": "2026-02-11"
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

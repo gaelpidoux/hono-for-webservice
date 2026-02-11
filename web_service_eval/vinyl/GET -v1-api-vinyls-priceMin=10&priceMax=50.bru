@@ -1,0 +1,25 @@
+meta {
+  name: GET /v1/api/vinyls?priceMin=10&priceMax=50
+  type: http
+  seq: 7
+}
+
+get {
+  url: http://localhost:3000/v1/api/vinyls?priceMin=10&priceMax=50
+  body: none
+  auth: bearer
+}
+
+params:query {
+  priceMin: 10
+  priceMax: 50
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OThjOTFiYjU0Y2U3YTdjNzA0ZjY5YTEiLCJlbWFpbCI6Im1hbmFnZXIyQHRlc3QuY29tIiwiZXhwIjoxNzcwODIyNzk2fQ.l0JYJel8PsX4bLHVlqNyszI89uhWy5Q0LyYOhOYgiak
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,16 @@
+meta {
+  name: GET - groups :ID
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:3000/v1/api/groups/698c936a9608339974c8e07c
+  body: json
+  auth: inherit
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

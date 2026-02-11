@@ -1,0 +1,26 @@
+meta {
+  name: groups :ID copy
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://localhost:3000/v1/api/groups/698c96369c5d139bcf2cffa0
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OThjOTFiYjU0Y2U3YTdjNzA0ZjY5YTEiLCJlbWFpbCI6Im1hbmFnZXIyQHRlc3QuY29tIiwiZXhwIjoxNzcwODIxMjQyfQ.CSVE3FVwS5yL6xCImgRhl4Y4KJb0xIMPZP3VT34ytPQ
+}
+
+body:json {
+  {
+    "genre": "jechangelegenre"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

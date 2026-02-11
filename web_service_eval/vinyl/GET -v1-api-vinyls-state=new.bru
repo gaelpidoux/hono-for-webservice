@@ -1,0 +1,24 @@
+meta {
+  name: GET /v1/api/vinyls?state=new
+  type: http
+  seq: 8
+}
+
+get {
+  url: http://localhost:3000/v1/api/vinyls?state=old
+  body: none
+  auth: bearer
+}
+
+params:query {
+  state: old
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OThjOTFiYjU0Y2U3YTdjNzA0ZjY5YTEiLCJlbWFpbCI6Im1hbmFnZXIyQHRlc3QuY29tIiwiZXhwIjoxNzcwODIyNzk2fQ.l0JYJel8PsX4bLHVlqNyszI89uhWy5Q0LyYOhOYgiak
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,22 @@
+meta {
+  name: Patch vinyls :ID
+  type: http
+  seq: 5
+}
+
+patch {
+  url: http://localhost:3000/v1/api/vinyls/698c936a9608339974c8e07c
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "genre": "jechangelegenre"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

@@ -1,0 +1,22 @@
+meta {
+  name: delete- vinyls :ID
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://localhost:3000/v1/api/vinyls/698c936a9608339974c8e07c
+  body: json
+  auth: bearer
+}
+
+body:json {
+  {
+    "genre": "jechangelegenre"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

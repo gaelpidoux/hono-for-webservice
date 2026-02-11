@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "web_service_eval",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

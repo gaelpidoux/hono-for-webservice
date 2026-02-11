@@ -1,0 +1,28 @@
+meta {
+  name: create groups
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/v1/api/groups
+  body: json
+  auth: bearer
+}
+
+auth:bearer {
+  token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OThjOTFiYjU0Y2U3YTdjNzA0ZjY5YTEiLCJlbWFpbCI6Im1hbmFnZXIyQHRlc3QuY29tIiwiZXhwIjoxNzcwODIxMjQyfQ.CSVE3FVwS5yL6xCImgRhl4Y4KJb0xIMPZP3VT34ytPQ
+}
+
+body:json {
+  {
+    "name": "groupsdemachin",
+    "genre": "machin",
+    "createdAt": "2026-01-01"
+  }
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
