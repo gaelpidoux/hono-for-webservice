@@ -1,17 +1,18 @@
 meta {
-  name: GET /v1/api/vinyls?group=ID
+  name: GET /v1/api/vinyls?group=ID et stat
   type: http
-  seq: 9
+  seq: 16
 }
 
 get {
-  url: http://localhost:3000/v1/api/vinyls?group=698c934e9608339974c8e072
+  url: http://localhost:3000/v1/api/vinyls?group=698c934e9608339974c8e072&state=new
   body: none
   auth: bearer
 }
 
 params:query {
   group: 698c934e9608339974c8e072
+  state: new
 }
 
 auth:bearer {
