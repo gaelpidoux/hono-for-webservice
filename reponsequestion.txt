@@ -1,0 +1,30 @@
+1/ PUT & PATCH Quelle est la différence entre un PUT un PATCH
+
+la grosse diff c'est que PUT remplace complet la ressource.
+
+Alors que patch on peut mettre qu'une partie.
+exemple 
+http://localhost:3000/v1/api/vinyls/698c936a9608339974c8e07c
+
+{
+  "genre": "jechangelegenre"
+}
+
+pour changer le genre du vinyls je peux simplement faire ça.
+
+
+2/ FETCH/AXIOS Pourquoi un call vers mon api depuis Postman fonctionne mais semble bloqué lorsque le même call
+est exécuté par Firefox?
+
+Ne respecte pas la politique CORS.
+
+
+
+3/ NGINX/APACHE Qu'est ce qui justifie d'avoir en plus de notre api node un serveur web comme Apache ou Nginx?
+
+
+4/ PERFORMANCES Citez 3 axes vus en cours pour améliorer les performance d'une api Rest
+
+On le "Cache" pour réduit les appelles en base de données.
+On le magnifique "Pagination & Projection" ! On demande moins d'info en une fois
+Et enfin l'optimisation en base de données, (Index, on evite N+1, on optimise ses requêtes)
