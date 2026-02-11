@@ -8,16 +8,21 @@ const queryBuilder = {
       fields,
       embed,
       page = 1,
+      priceMin,
+      priceMax,
       ...rest
     } = query;
-    const mongooseQuery = this.extractQuery(rest);
+
+    const mongooseQuery = this.extractQuery({
+      ...rest,
+      priceMin,
+      priceMax,
+    });
+
     const mongooseSort = this.extractSort(sort);
-    // TODO Pagination!
-    // {skip:10}, {limit:50}
     const mongooseLimit = this.extractLimit(limit);
     const mongooseSkip = this.extractSkip(page, limit);
     const mongooseProjection = this.extractSimpleProjection(fields);
-
     const mongooseEmbed = this.extractEmbed(embed);
 
     const findObjectParams = {
@@ -30,54 +35,85 @@ const queryBuilder = {
         skip: mongooseSkip?.skip,
       },
     };
-    console.log(JSON.stringify(findObjectParams, null, 2));
+
     return findObjectParams;
   },
-  extractQuery(queryRest) {
-    return { ...queryRest };
-  },
-  extractSort(sort) {
-    const sortOptions: Record<string, number> = {};
-    if (sort) {
-      if (sort.includes("-")) {
-        const cleanParam = sort.slice(1, sort.length); // remove - from param names
-        sortOptions[cleanParam] = -1;
+
+ 
+  extractQuery(queryRest: Record<string, any>) {
+    const filter: Record<string, any> = {};
+
+    const { priceMin, priceMax, ...rest } = queryRest;
+
+    // filtres simples (state, genre, group…)
+    Object.entries(rest).forEach(([key, value]) => {
+      if (value !== undefined && value !== "") {
+        filter[key] = value;
       }
-      else {
+    });
+
+    // gestion intervalle prix
+    if (priceMin || priceMax) {
+      filter.price = {};
+      if (priceMin) filter.price.$gte = Number(priceMin);
+      if (priceMax) filter.price.$lte = Number(priceMax);
+    }
+
+    return filter;
+  },
+
+  extractSort(sort: string | false) {
+    const sortOptions: Record<string, number> = {};
+
+    if (sort) {
+      if (sort.startsWith("-")) {
+        const cleanParam = sort.slice(1);
+        sortOptions[cleanParam] = -1;
+      } else {
         sortOptions[sort] = 1;
       }
     }
+
     return { sort: sortOptions };
   },
+
   extractLimit(pLimit: number) {
     const limit = pLimit ?? env.API_DEFAUT_LIMIT;
     return { limit: Number(limit) };
   },
+
   extractSkip(page: number, pLimit: number) {
     const limit = pLimit ?? env.API_DEFAUT_LIMIT;
+
     if (page && page > 1) {
       return { skip: (page - 1) * limit };
     }
   },
+
   extractSimpleProjection(fields: string | undefined) {
-    // Todo: handle exclude/include
     const projOptions: Record<string, number> = {};
+
     if (fields) {
       const fieldsList = fields.split(",");
-      const onlyExclude = fieldsList.filter(elem => elem.includes("-"));
-      onlyExclude.forEach((elem) => {
-        const cleanField = elem.slice(1, elem.length); // remove - from param names
-        projOptions[cleanField] = 0;
+
+      fieldsList.forEach((field) => {
+        if (field.startsWith("-")) {
+          projOptions[field.slice(1)] = 0;
+        } else {
+          projOptions[field] = 1;
+        }
       });
     }
+
     return projOptions;
   },
+
   extractEmbed(embed: string | undefined) {
-    const embedOptions: Record<string, string> = {};
-    if (embed) {
-      embedOptions.populate = { path: embed };
-    }
-    return embedOptions;
+    if (!embed) return {};
+
+    return {
+      populate: { path: embed },
+    };
   },
 };
 
