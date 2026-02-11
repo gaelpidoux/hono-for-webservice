@@ -1,0 +1,27 @@
+meta {
+  name: auth register disquaire
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:3000/v1/api/auth/register
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email": "disquaire@test.com",
+    "firstName": "disquaire",
+    "lastName": "disquaire",
+    "password": "disquaire",
+    "roles": ["698ca1050fd8f8d1c00c04d9"]
+  }
+  
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}

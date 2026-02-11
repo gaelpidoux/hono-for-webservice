@@ -1,17 +1,23 @@
 meta {
-  name: allvinyls
+  name: Patch stock vinyls :ID
   type: http
-  seq: 2
+  seq: 14
 }
 
-get {
-  url: http://localhost:3000/v1/api/vinyls
+patch {
+  url: http://localhost:3000/v1/api/vinyls/698c97f970f2fbde3693630d
   body: json
   auth: bearer
 }
 
 auth:bearer {
   token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OThjOTFiYjU0Y2U3YTdjNzA0ZjY5YTEiLCJlbWFpbCI6Im1hbmFnZXIyQHRlc3QuY29tIiwiZXhwIjoxNzcwODI1MTI1fQ.d-EdpmbXoOZNEp_g37YmpOdMjWlff-HHqOv46gf7s3I
+}
+
+body:json {
+  {
+    "stock": "5"
+  }
 }
 
 settings {

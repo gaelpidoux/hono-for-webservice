@@ -1,7 +1,7 @@
 meta {
-  name: role
+  name: role disquaire
   type: http
-  seq: 11
+  seq: 6
 }
 
 post {
@@ -12,19 +12,19 @@ post {
 
 body:json {
   {
-    "name": "admineval",
-    "description": "Full access",
+    "name": "disquaire",
+    "description": "Can list and edit vinyls and groups",
     "authorizations": [
       {
         "ressource": "vinyls",
         "permissions": {
-          "full": ["create", "read", "update", "delete"]
+          "full": ["GET", "PATCH"]
         }
       },
       {
         "ressource": "groups",
         "permissions": {
-          "full": ["create", "read", "update", "delete"]
+          "full": ["GET", "PATCH"]
         }
       }
     ]

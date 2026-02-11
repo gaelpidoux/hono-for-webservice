@@ -5,7 +5,7 @@ meta {
 }
 
 get {
-  url: /v1/api/vinyls?page=1&limit=2
+  url: http://localhost:3000/v1/api/vinyls?page=1&limit=2
   body: none
   auth: inherit
 }
@@ -17,4 +17,5 @@ params:query {
 
 settings {
   encodeUrl: true
+  timeout: 0
 }
