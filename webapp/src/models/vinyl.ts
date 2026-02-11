@@ -20,13 +20,19 @@ const vinylSchema = new Schema<iVinyl>({
     type: "Date",
   },
   state: {
-    type: "String",
+    type: String,
+    enum: ["new", "ok", "used"],
+    required: true,
   },
   price: {
     type: "Number",
+    required: [true, "Price is required"],
+    min: [0, "Price cannot be negative"]
   },
   stock: {
     type: "Number",
+    required: true,
+    min: [0, "Stock cannot be negative"]
   },
   genre: {
     type: "String",
